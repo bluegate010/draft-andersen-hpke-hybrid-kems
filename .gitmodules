@@ -1,0 +1,3 @@
+[submodule "i-d-template"]
+	path = i-d-template
+	url = https://github.com/martinthomson/i-d-template
