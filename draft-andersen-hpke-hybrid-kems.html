@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Post-quantum and Hybrid KEMs for HPKE</title>
+<title>Hybrid KEMs for HPKE</title>
 <meta content="Jeff Andersen" name="author">
 <meta content="
-       This memo defines post-quantum and hybrid KEMs for use in Hybrid Public Key Encryption as defined in RFC 9180. 
+       This memo defines hybrid KEMs for use in Hybrid Public Key Encryption as defined in RFC 9180. 
     " name="description">
 <meta content="xml2rfc 3.27.0" name="generator">
 <meta content="hpke" name="keyword">
@@ -1045,7 +1045,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Post-quantum and Hybrid KEMs for HPKE</td>
+<td class="center">Hybrid KEMs for HPKE</td>
 <td class="right">February 2025</td>
 </tr></thead>
 <tfoot><tr>
@@ -1079,10 +1079,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Post-quantum and Hybrid KEMs for HPKE</h1>
+<h1 id="title">Hybrid KEMs for HPKE</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This memo defines post-quantum and hybrid KEMs for use in Hybrid Public Key Encryption as defined in RFC 9180.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This memo defines hybrid KEMs for use in Hybrid Public Key Encryption as defined in RFC 9180.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1153,13 +1153,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-post-quantum-and-hybrid-kem" class="internal xref">Post-quantum and hybrid KEMs for HPKE</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-hybrid-kems-for-hpke" class="internal xref">Hybrid KEMs for HPKE</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-ml-dsa-768-use-in-hpke" class="internal xref">ML-DSA-768 use in HPKE</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-hybrid-ecdh-p-384-ml-dsa-76" class="internal xref">Hybrid ECDH P-384 + ML-DSA-768 use in HPKE</a></p>
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-hybrid-ecdh-p-384-ml-kem-76" class="internal xref">Hybrid ECDH P-384 + ML-KEM-768 use in HPKE</a></p>
 </li>
             </ul>
 </li>
@@ -1195,7 +1192,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1"><span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span> defines HPKE, a hybrid asymmetric encryption scheme built on KEMs, KDFs, and AEADs.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#SP800277ipd" class="cite xref">SP800277ipd</a>]</span> defines a generic KEM combiner for hybrid KEMs.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document defines bindings between post-quantum and hybrid KEMs as provided in <span>[<a href="#SP800277ipd" class="cite xref">SP800277ipd</a>]</span> and HPKE as defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">This document defines bindings between hybrid KEMs as provided in <span>[<a href="#SP800277ipd" class="cite xref">SP800277ipd</a>]</span> and HPKE as defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="requirements-language">
 <section id="section-1.1">
         <h3 id="name-requirements-language">
@@ -1209,58 +1206,34 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 </div>
 </section>
 </div>
-<div id="post-quantum-and-hybrid-kems-for-hpke">
+<div id="hybrid-kems-for-hpke">
 <section id="section-2">
-      <h2 id="name-post-quantum-and-hybrid-kem">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-post-quantum-and-hybrid-kem" class="section-name selfRef">Post-quantum and hybrid KEMs for HPKE</a>
+      <h2 id="name-hybrid-kems-for-hpke">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-hybrid-kems-for-hpke" class="section-name selfRef">Hybrid KEMs for HPKE</a>
       </h2>
-<div id="ml-dsa-768-use-in-hpke">
+<div id="hybrid-ecdh-p-384-ml-kem-768-use-in-hpke">
 <section id="section-2.1">
-        <h3 id="name-ml-dsa-768-use-in-hpke">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-ml-dsa-768-use-in-hpke" class="section-name selfRef">ML-DSA-768 use in HPKE</a>
+        <h3 id="name-hybrid-ecdh-p-384-ml-kem-76">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-hybrid-ecdh-p-384-ml-kem-76" class="section-name selfRef">Hybrid ECDH P-384 + ML-KEM-768 use in HPKE</a>
         </h3>
-<p id="section-2.1-1">ML-DSA-768 satisfies the HPKE KEM interface as follows.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2"><code>SerializePublicKey</code>, <code>SerializePrivateKey</code>, and <code>DeserializePrivateKey</code> are the identity functions, as public and private keys are fixed-length byte strings as defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">Hybrid ECDH P-384 + ML-KEM-768 satisfies the HPKE KEM interface as follows.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-2"><code>SerializePublicKey</code>, <code>SerializePrivateKey</code>, and <code>DeserializePrivateKey</code> are the identity functions, as public and private keys are fixed-length byte strings which are concatenations of serialized ECDH keys as defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span> and ML-KEM keys as defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
 <p id="section-2.1-3"><code>DeriveKeyPair</code> is given by<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-2.1-4">
-<pre>
-def DeriveKeyPair(ikm):
-  dkp_prk = HKDF-SHA512-Extract("", ikm)
-  dkp_okm = HKDF-SHA512-Expand(dkp_prk, "ml-kem-768-dkp", 64)
-
-  return ML-KEM-768.KeyGen_internal(dkp_okm[0:32], dkp_okm[32:64])
-</pre><a href="#section-2.1-4" class="pilcrow">¶</a>
-</div>
-<p id="section-2.1-5"><code>ML-KEM-768.KeyGen_internal</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
-<p id="section-2.1-6"><code>Encap</code> is <code>ML-KEM-768.Encaps(pk)</code> from <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>, where an ML-KEM encapsulation key check failure causes an HPKE EncapError.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
-<p id="section-2.1-7"><code>Decap</code> is <code>ML-KEM-768.Decap(ct, sk)</code> from <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-7" class="pilcrow">¶</a></p>
-<p id="section-2.1-8">As defined here, ML-DSA-768 is not an authenticated KEM: it does not support <code>AuthEncap</code> and <code>AuthDecap</code>.<a href="#section-2.1-8" class="pilcrow">¶</a></p>
-<p id="section-2.1-9">Nsecret, Nenc, Npk, and Nsk are defined in Section 3.<a href="#section-2.1-9" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="hybrid-ecdh-p-384-ml-dsa-768-use-in-hpke">
-<section id="section-2.2">
-        <h3 id="name-hybrid-ecdh-p-384-ml-dsa-76">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-hybrid-ecdh-p-384-ml-dsa-76" class="section-name selfRef">Hybrid ECDH P-384 + ML-DSA-768 use in HPKE</a>
-        </h3>
-<p id="section-2.2-1">Hybrid ECDH P-384 + ML-DSA-768 satisfies the HPKE KEM interface as follows.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2"><code>SerializePublicKey</code>, <code>SerializePrivateKey</code>, and <code>DeserializePrivateKey</code> are the identity functions, as public and private keys are fixed-length byte strings which are concatenations of serialized ECDH keys as defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span> and ML-KEM keys as defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<p id="section-2.2-3"><code>DeriveKeyPair</code> is given by<a href="#section-2.2-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-2.2-4">
 <pre>
 def DeriveKeyPair(ikm):
   dkp_prk = HKDF-SHA512-Extract("", ikm)
   dkp_okm = HKDF-SHA512-Expand(dkp_prk, "ecdh-p384-ml-kem-768-dkp", 96)
 
   (pk_ecc, sk_ecc) = DHKEM(P-384, HKDF-SHA384).DeriveKeyPair(dkp_okm[0:32])
-  (pk_mlkem, sk_mlkem) = ML-DSA-768.DeriveKeyPair(dkp_okm[32:96])
+  (pk_mlkem, sk_mlkem) = ML-KEM-768.KeyGen_internal(dkp_okm[32:64], dkp_okm[64:96])
 
   return (pk_ecc || pk_mlkem, sk_ecc || sk_mlkem)
-</pre><a href="#section-2.2-4" class="pilcrow">¶</a>
+</pre><a href="#section-2.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-2.2-5"><code>DHKEM(P-384, HKDF-SHA384).DeriveKeyPair</code> is defined in section 7.1.3 of <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-DSA-768.DeriveKeyPair</code> is defined in section 2.1 of this document.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
-<p id="section-2.2-6"><code>Encap</code> is given by<a href="#section-2.2-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-2.2-7">
+<p id="section-2.1-5"><code>DHKEM(P-384, HKDF-SHA384).DeriveKeyPair</code> is defined in section 7.1.3 of <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.KeyGen_internal</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
+<p id="section-2.1-6"><code>Encap</code> is given by<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-2.1-7">
 <pre>
 def Encap(pk):
   pk_ecc = pk[0:97]
@@ -1269,18 +1242,18 @@ def Encap(pk):
   ss_ecc, ct_ecc = DHKEM(P-384, HKDF-SHA384).Encap(pk_ecc)
   ss_mlkem, ct_mlkem = ML-KEM-768.Encaps(pk_mlkem)
 
-  ss = SHA2-512(ss_ecc || ss_mlkem || ct_ecc || ct_mlkem || pk_ecc || pk_mlkem || 0x0011 || 0x0300)
+  ss = SHA2-512(ss_ecc || ss_mlkem || ct_ecc || ct_mlkem || pk_ecc || pk_mlkem || 0x0011 || 0x0041)
   ct = ct_ecc || ct_mlkem
 
   return (ss, ct)
-</pre><a href="#section-2.2-7" class="pilcrow">¶</a>
+</pre><a href="#section-2.1-7" class="pilcrow">¶</a>
 </div>
-<p id="section-2.2-8"><code>DHKEM(P-384, HKDF-SHA384).Encap</code> is defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.Encaps</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.2-8" class="pilcrow">¶</a></p>
-<p id="section-2.2-9">0x0011 and 0x0300 are the HPKE KEM identifiers for <code>DHKEM(P-384, HKDF-SHA384)</code> and <code>ML-DSA-768</code>, respectively.<a href="#section-2.2-9" class="pilcrow">¶</a></p>
-<p id="section-2.2-10">SHA2-512 is a valid key combiner as given in <span>[<a href="#SP800277ipd" class="cite xref">SP800277ipd</a>]</span>.<a href="#section-2.2-10" class="pilcrow">¶</a></p>
-<p id="section-2.2-11">An ML-KEM encapsulation key check failure causes an HPKE EncapError.<a href="#section-2.2-11" class="pilcrow">¶</a></p>
-<p id="section-2.2-12"><code>Decap</code> is given by<a href="#section-2.2-12" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-2.2-13">
+<p id="section-2.1-8"><code>DHKEM(P-384, HKDF-SHA384).Encap</code> is defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.Encaps</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-8" class="pilcrow">¶</a></p>
+<p id="section-2.1-9">0x0011 and 0x0041 are the HPKE KEM identifiers for <code>DHKEM(P-384, HKDF-SHA384)</code> and <code>ML-KEM-768</code>, respectively. 0x0041 is proposed in <span>[<a href="#draft-connolly-cfrg-hpke-mlkem" class="cite xref">draft-connolly-cfrg-hpke-mlkem</a>]</span>.<a href="#section-2.1-9" class="pilcrow">¶</a></p>
+<p id="section-2.1-10">SHA2-512 is a valid key combiner as given in <span>[<a href="#SP800277ipd" class="cite xref">SP800277ipd</a>]</span>.<a href="#section-2.1-10" class="pilcrow">¶</a></p>
+<p id="section-2.1-11">An ML-KEM encapsulation key check failure causes an HPKE EncapError.<a href="#section-2.1-11" class="pilcrow">¶</a></p>
+<p id="section-2.1-12"><code>Decap</code> is given by<a href="#section-2.1-12" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-2.1-13">
 <pre>
 def Decap(ct, sk):
   sk_ecc = sk[0:48]
@@ -1292,14 +1265,14 @@ def Decap(ct, sk):
   ss_ecc = DHKEM(P-384, HKDF-SHA384).Decap(ct_ecc, sk_ecc)
   ss_mlkem = ML-KEM-768.Decaps(ct_mlkem, sk_mlkem)
 
-  ss = SHA2-512(ss_ecc || ss_mlkem || ct_ecc || ct_mlkem || pk_ecc || pk_mlkem || 0x0011 || 0x0300)
+  ss = SHA2-512(ss_ecc || ss_mlkem || ct_ecc || ct_mlkem || pk_ecc || pk_mlkem || 0x0011 || 0x0041)
 
   return ss
-</pre><a href="#section-2.2-13" class="pilcrow">¶</a>
+</pre><a href="#section-2.1-13" class="pilcrow">¶</a>
 </div>
-<p id="section-2.2-14"><code>DHKEM(P-384, HKDF-SHA384).Decap</code> is defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.Decaps</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.2-14" class="pilcrow">¶</a></p>
-<p id="section-2.2-15">As defined here, this hybrid scheme is not an authenticated KEM: it does not support <code>AuthEncap</code> and <code>AuthDecap</code>.<a href="#section-2.2-15" class="pilcrow">¶</a></p>
-<p id="section-2.2-16">Nsecret, Nenc, Npk, and Nsk are defined in Section 3.<a href="#section-2.2-16" class="pilcrow">¶</a></p>
+<p id="section-2.1-14"><code>DHKEM(P-384, HKDF-SHA384).Decap</code> is defined in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.Decaps</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-14" class="pilcrow">¶</a></p>
+<p id="section-2.1-15">As defined here, this hybrid scheme is not an authenticated KEM: it does not support <code>AuthEncap</code> and <code>AuthDecap</code>.<a href="#section-2.1-15" class="pilcrow">¶</a></p>
+<p id="section-2.1-16">Nsecret, Nenc, Npk, and Nsk are defined in Section 3.<a href="#section-2.1-16" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1309,23 +1282,15 @@ def Decap(ct, sk):
       <h2 id="name-iana-considerations">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-3-1">This document requests/registers the following two entries to the "HPKE KEM Identifiers" registry.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">Value:  768 = 0x0300 (please)<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">KEM:  ML-KEM-768<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">Nsecret:  32<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">Nenc:  1088<a href="#section-3-5" class="pilcrow">¶</a></p>
-<p id="section-3-6">Npk:  1184<a href="#section-3-6" class="pilcrow">¶</a></p>
-<p id="section-3-7">Nsk:  2400<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-1">This document requests/registers the following entries to the "HPKE KEM Identifiers" registry.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">Value: 384 + 768 = 1152 = 0x0480 (please)<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">KEM: ECDH P-384 + ML-KEM-768<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">Nsecret:  64<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">Nenc: 1185<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">Npk: 1232<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">Nsk:  2448<a href="#section-3-7" class="pilcrow">¶</a></p>
 <p id="section-3-8">Auth:  no<a href="#section-3-8" class="pilcrow">¶</a></p>
 <p id="section-3-9">Reference:  This document<a href="#section-3-9" class="pilcrow">¶</a></p>
-<p id="section-3-10">Value: 384 + 768 = 1152 = 0x0480 (please)<a href="#section-3-10" class="pilcrow">¶</a></p>
-<p id="section-3-11">KEM: ECDH P-384 + ML-KEM-768<a href="#section-3-11" class="pilcrow">¶</a></p>
-<p id="section-3-12">Nsecret:  64<a href="#section-3-12" class="pilcrow">¶</a></p>
-<p id="section-3-13">Nenc: 1185<a href="#section-3-13" class="pilcrow">¶</a></p>
-<p id="section-3-14">Npk: 1232<a href="#section-3-14" class="pilcrow">¶</a></p>
-<p id="section-3-15">Nsk:  2448<a href="#section-3-15" class="pilcrow">¶</a></p>
-<p id="section-3-16">Auth:  no<a href="#section-3-16" class="pilcrow">¶</a></p>
-<p id="section-3-17">Reference:  This document<a href="#section-3-17" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Security">
@@ -1353,6 +1318,10 @@ def Decap(ct, sk):
 <dt id="FIPS203">[FIPS203]</dt>
       <dd>
 <span class="refTitle">"FIPS 203 - Module-Lattice-Based Key-Encapsulation Mechanism Standard"</span>, <span>n.d.</span>. </dd>
+<dd class="break"></dd>
+<dt id="draft-connolly-cfrg-hpke-mlkem">[draft-connolly-cfrg-hpke-mlkem]</dt>
+      <dd>
+<span class="refTitle">"ML-KEM for HPKE"</span>, <span>n.d.</span>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-connolly-cfrg-hpke-mlkem">https://datatracker.ietf.org/doc/draft-connolly-cfrg-hpke-mlkem</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
