@@ -170,11 +170,12 @@ def EncapsulateDerand(pk, encaps_seed):
   return (ss, ct)
 
    pk is a 1281 byte hybrid encapsulation key which is a concatenation
-   of a serialized ECC public key and an ML-KEM public key. eseed MUST
-   be 80 bytes.
+   of a serialized ECC public key and an ML-KEM public key. encaps_seed
+   MUST be 80 bytes.
 
    DHKEM(P-384).DH is the DH group function associated with P-384 as
-   specified in [RFC9180].
+   specified in [RFC9180].  ML-KEM-768.Encaps_internal is defined in
+   [FIPS203].
 
    EncapsulateDerand returns the 64 byte shared secret ss and the 1185
    byte ciphertext ct.

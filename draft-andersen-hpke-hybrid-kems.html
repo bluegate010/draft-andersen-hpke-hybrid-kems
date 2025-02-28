@@ -1283,8 +1283,8 @@ def EncapsulateDerand(pk, encaps_seed):
   return (ss, ct)
 </pre><a href="#section-2.1-15" class="pilcrow">¶</a>
 </div>
-<p id="section-2.1-16"><code>pk</code> is a 1281 byte hybrid encapsulation key which is a concatenation of a serialized ECC public key and an ML-KEM public key. <code>eseed</code> <span class="bcp14">MUST</span> be 80 bytes.<a href="#section-2.1-16" class="pilcrow">¶</a></p>
-<p id="section-2.1-17"><code>DHKEM(P-384).DH</code> is the DH group function associated with P-384 as specified in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>.<a href="#section-2.1-17" class="pilcrow">¶</a></p>
+<p id="section-2.1-16"><code>pk</code> is a 1281 byte hybrid encapsulation key which is a concatenation of a serialized ECC public key and an ML-KEM public key. <code>encaps_seed</code> <span class="bcp14">MUST</span> be 80 bytes.<a href="#section-2.1-16" class="pilcrow">¶</a></p>
+<p id="section-2.1-17"><code>DHKEM(P-384).DH</code> is the DH group function associated with P-384 as specified in <span>[<a href="#RFC9180" class="cite xref">RFC9180</a>]</span>. <code>ML-KEM-768.Encaps_internal</code> is defined in <span>[<a href="#FIPS203" class="cite xref">FIPS203</a>]</span>.<a href="#section-2.1-17" class="pilcrow">¶</a></p>
 <p id="section-2.1-18"><code>EncapsulateDerand</code> returns the 64 byte shared secret <code>ss</code> and the 1185 byte
 ciphertext <code>ct</code>.<a href="#section-2.1-18" class="pilcrow">¶</a></p>
 <p id="section-2.1-19"><code>Decap</code> is given by<a href="#section-2.1-19" class="pilcrow">¶</a></p>
